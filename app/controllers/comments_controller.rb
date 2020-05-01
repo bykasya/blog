@@ -18,7 +18,7 @@ before_action :set_post
    def destroy
     @comment=Comment.find(params[:id])
     @comment.destroy
-    redirect_to @post
+    redirect_to @post 
    end
 
    private
