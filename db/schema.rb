@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200427225227) do
+ActiveRecord::Schema.define(version: 20200504074036) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 20200427225227) do
     t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "product_name"
+    t.integer  "product_count"
+    t.integer  "customer_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
   create_table "pages", force: :cascade do |t|

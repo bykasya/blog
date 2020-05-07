@@ -54,7 +54,8 @@ RSpec.describe "CustomersControllers", type: :request do
       put customer_path(id: customer.id), params: {customer: { email: "newemail@example.com"}}
       customer.reload
       expect(customer.email).to eq("newemail@example.com")
-      expect(response.status).to redirect_to customer_path(id: customer.id)
+      expect(response).to redirect_to customer_path(id: customer.id)
+      expect(response.status).to eq(302)
     end
   end
 
@@ -80,9 +81,9 @@ RSpec.describe "CustomersControllers", type: :request do
     it "deletes a customer record" do
       customer = FactoryBot.create(:customer)
       delete customer_path(id: customer.id)
-    #  expect(customer).to eq(nil)
       expect change(Customer, :count).from(1).to eq(0)
       expect(response.status).to eq(302)
+      expect(response).to redirect_to customers_path
     end
   end
 end
