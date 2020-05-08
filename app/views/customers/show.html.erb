@@ -23,7 +23,7 @@
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Back', customers_path %>
 
-<p><strong> Orders: </strong></p>
+<p><strong> <%=@customer.full_name%> orders: </strong></p>
 <p>
   <table>
     <thead>
